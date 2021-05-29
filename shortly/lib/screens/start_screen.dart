@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shortly/components/custom_button.dart';
-import 'package:shortly/constant/strings_constants.dart';
-import 'package:shortly/constant/styles_constants.dart';
 import 'package:shortly/screens/main_screen.dart';
 
 class StartScreen extends StatelessWidget {
@@ -11,6 +9,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,12 +19,9 @@ class StartScreen extends StatelessWidget {
                 child: Column(
               children: [
                 SizedBox(
-                  height: 20.0,
+                  height: 30.0,
                 ),
-                Text(
-                  kAppName,
-                  style: kAppNameTextStyle,
-                ),
+                SvgPicture.asset('images/logo.svg'),
                 Expanded(
                   child: SvgPicture.asset(
                     'images/illustration.svg',

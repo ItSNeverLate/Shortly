@@ -14,10 +14,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF2ACFCF),
+        primaryColorDark: Color(0xFF3B3054),
+        accentColor: Color(0xFFF46262),
+        scaffoldBackgroundColor: Color(0xFFF0F1F6),
         fontFamily: 'Poppins',
       ),
-      initialRoute: StartScreen.id,
+      initialRoute: BenefitsScreen.id,
       routes: {
         StartScreen.id: (context) => StartScreen(),
         BenefitsScreen.id: (context) => BenefitsScreen(),
