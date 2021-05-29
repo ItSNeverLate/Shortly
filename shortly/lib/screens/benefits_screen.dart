@@ -26,16 +26,19 @@ class BenefitsScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     PageTile(
-                        title: 'Brand Recognitionss',
-                        description: 'description',
+                        title: 'Brand Recognitions',
+                        description:
+                            'Boost your brand recognition with each click. Generic links don\'t mean a thing. Branded links help instil confidence in your contetnt',
                         iconPath: 'images/diagram.svg'),
                     PageTile(
-                        title: 'Brand Recognitionss',
-                        description: 'description',
+                        title: 'Detailed Records',
+                        description:
+                            'Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions',
                         iconPath: 'images/gauge.svg'),
                     PageTile(
-                        title: 'Brand Recognitionss',
-                        description: 'description',
+                        title: 'Fully Customizable',
+                        description:
+                            'Improve brand awareness and content discoverability through customizable links, supercharging audience engagement',
                         iconPath: 'images/tools.svg'),
                   ],
                 ),

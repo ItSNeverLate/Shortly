@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFF0F1F6),
         fontFamily: 'Poppins',
       ),
-      initialRoute: BenefitsScreen.id,
+      initialRoute: MainScreen.id,
       routes: {
         StartScreen.id: (context) => StartScreen(),
         BenefitsScreen.id: (context) => BenefitsScreen(),

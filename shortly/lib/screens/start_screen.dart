@@ -38,7 +38,6 @@ class StartScreen extends StatelessWidget {
                 children: [
                   Text(
                     'More than just shorter links',
-                    softWrap: true,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 40.0,
@@ -50,7 +49,6 @@ class StartScreen extends StatelessWidget {
                   ),
                   Text(
                     'Build your brand\'s recognition and get detailed insights on how your links are performing',
-                    softWrap: true,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.0,

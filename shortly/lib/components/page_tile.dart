@@ -29,6 +29,7 @@ class PageTile extends StatelessWidget {
                   color: Colors.white,
                   child: Container(
                     height: 300.0,
+                    padding: EdgeInsets.all(16.0),
                     width: double.infinity,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -39,6 +40,17 @@ class PageTile extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          description,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
