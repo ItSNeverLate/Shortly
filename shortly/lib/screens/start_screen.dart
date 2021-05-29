@@ -11,8 +11,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 50.0),
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -20,6 +19,9 @@ class StartScreen extends StatelessWidget {
             Expanded(
                 child: Column(
               children: [
+                SizedBox(
+                  height: 20.0,
+                ),
                 Text(
                   kAppName,
                   style: kAppNameTextStyle,
@@ -33,7 +35,7 @@ class StartScreen extends StatelessWidget {
               ],
             )),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(32.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,7 +58,7 @@ class StartScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.0,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(
