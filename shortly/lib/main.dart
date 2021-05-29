@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColorDark: Color(0xFF3B3054),
         accentColor: Color(0xFFF46262),
         scaffoldBackgroundColor: Color(0xFFF0F1F6),
+        errorColor: Colors.red[300],
         fontFamily: 'Poppins',
       ),
       initialRoute: MainScreen.id,

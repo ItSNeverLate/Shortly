@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shortly/components/custom_button.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   static final id = 'main_screen';
 
   @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  bool _isValid = false;
+
+  @override
   Widget build(BuildContext context) {
+    String _link = '';
+
     return Scaffold(
       body: SafeArea(
         bottom: false,
@@ -77,6 +86,7 @@ class MainScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         TextField(
+                          // controller: _text,
                           cursorColor: Colors.black,
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -84,14 +94,20 @@ class MainScreen extends StatelessWidget {
                             fontSize: 22.0,
                             color: Colors.black,
                           ),
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            _link = value;
+                          },
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(12.0),
                             filled: true,
-                            hintText: "Shorten a link here ...",
+                            hintText: _isValid
+                                ? 'Shorten a link here ...'
+                                : 'Please add a link here',
                             hintStyle: TextStyle(
                               fontWeight: FontWeight.w700,
-                              color: Colors.grey[350],
+                              color: _isValid
+                                  ? Colors.grey[350]
+                                  : Theme.of(context).errorColor,
                               fontSize: 22.0,
                             ),
                             fillColor: Colors.white,
@@ -103,10 +119,10 @@ class MainScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 10.0),
                         CustomButton(
-                          title: 'SHORTEN IT!',
-                          onPressed: () =>
-                              Navigator.pushNamed(context, MainScreen.id),
-                        )
+                            title: 'SHORTEN IT!',
+                            onPressed: () {
+                              if (_link.trim().length == 0) {}
+                            })
                       ],
                     ),
                   ),
