@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:shortly/components/page_tile.dart';
-import 'package:shortly/screens/main_screen.dart';
+import 'package:shortly/screens/main/index.dart';
 
 class BenefitsScreen extends StatelessWidget {
   static final id = 'benefits_screen';

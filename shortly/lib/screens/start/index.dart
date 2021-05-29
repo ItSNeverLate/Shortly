@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shortly/components/custom_button.dart';
-import 'package:shortly/screens/main_screen.dart';
+import 'package:shortly/screens/main/index.dart';
 
 class StartScreen extends StatelessWidget {
   static final id = 'start_screen';

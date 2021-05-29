@@ -33,7 +33,6 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   child: SvgPicture.asset(
                     'images/illustration.svg',
-                    alignment: Alignment.bottomRight,
                   ),
                 ),
               ],
