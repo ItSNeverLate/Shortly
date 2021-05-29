@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shortly/screens/benefits_screen.dart';
-import 'package:shortly/screens/main_screen.dart';
-import 'package:shortly/screens/start_screen.dart';
+import 'package:shortly/screens/benefits/index.dart';
+import 'package:shortly/screens/main/index.dart';
+import 'package:shortly/screens/start/index.dart';
 
 void main() {
   runApp(MyApp());

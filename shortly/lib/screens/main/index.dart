@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shortly/components/custom_button.dart';
+import 'package:shortly/models/shorten_url.dart';
+import 'package:shortly/screens/main/empty_list.dart';
+import 'package:shortly/screens/main/shorten_list.dart';
 
 class MainScreen extends StatefulWidget {
   static final id = 'main_screen';
@@ -11,6 +14,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool _isValid = true;
+  List<ShortenUrl> _list = [
+    ShortenUrl(shorten: 'shorten', url: 'url'),
+    ShortenUrl(shorten: 'shorten1', url: 'url1'),
+    ShortenUrl(shorten: 'shorten2', url: 'url2'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,50 +32,8 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                child: Column(
-              children: [
-                SizedBox(
-                  height: 30.0,
-                ),
-                SvgPicture.asset('images/logo.svg'),
-                Expanded(
-                  child: SvgPicture.asset(
-                    'images/illustration.svg',
-                  ),
-                ),
-              ],
-            )),
-            Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Let\'s get started!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Text(
-                    'Paste your first link into the field to shorten it',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                ],
-              ),
-            ),
+                child:
+                    _list.length > 0 ? ShortenList(list: _list) : EmptyList()),
             Container(
               color: Theme.of(context).primaryColorDark,
               height: 200.0,
@@ -122,12 +88,13 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         SizedBox(height: 10.0),
                         CustomButton(
-                            title: 'SHORTEN IT!',
-                            onPressed: () {
-                              setState(() {
-                                _isValid = _link.trim().length != 0;
-                              });
-                            })
+                          title: 'SHORTEN IT!',
+                          onPressed: () {
+                            setState(() {
+                              _isValid = _link.trim().length != 0;
+                            });
+                          },
+                        )
                       ],
                     ),
                   ),

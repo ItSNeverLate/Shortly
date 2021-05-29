@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({@required this.title, @required this.onPressed});
+  const CustomButton(
+      {@required this.title,
+      @required this.onPressed,
+      this.height = 55.0,
+      this.titleFontSize = 25.0});
 
   final String title;
   final Function onPressed;
+  final double height;
+  final double titleFontSize;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       minWidth: double.infinity,
-      height: 55.0,
+      height: height,
       elevation: 5.0,
       color: Theme.of(context).primaryColor,
       shape: RoundedRectangleBorder(
@@ -22,7 +28,7 @@ class CustomButton extends StatelessWidget {
         title,
         style: TextStyle(
           color: Colors.white,
-          fontSize: 25.0,
+          fontSize: titleFontSize,
           fontWeight: FontWeight.w700,
         ),
       ),
