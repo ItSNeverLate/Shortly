@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:shortly/components/custom_button.dart';
+import 'package:shortly/models/shorten_url.dart';
 import 'package:shortly/models/shorten_url_data.dart';
 import 'package:shortly/screens/main/empty_list.dart';
 import 'package:shortly/screens/main/shorten_list.dart';
@@ -91,9 +92,17 @@ class _MainScreenState extends State<MainScreen> {
                         CustomButton(
                           title: 'SHORTEN IT!',
                           onPressed: () {
+                            final isValid = _link.trim().length != 0;
                             setState(() {
-                              _isValid = _link.trim().length != 0;
+                              _isValid = isValid;
                             });
+                            if (isValid) {
+                              data.add(
+                                ShortenUrl(
+                                    shorten: 'http:///',
+                                    url: 'httppjhshjshsjhsjhshs'),
+                              );
+                            }
                           },
                         )
                       ],
