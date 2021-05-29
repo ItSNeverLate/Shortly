@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shortly/components/custom_button.dart';
 import 'package:shortly/models/shorten_url.dart';
+import 'package:shortly/models/shorten_url_data.dart';
 
 class ShortenTile extends StatelessWidget {
   final ShortenUrl shortenUrl;
-  final Function onCopy;
-  final Function onDelete;
 
-  ShortenTile(
-      {@required this.shortenUrl,
-      @required this.onCopy,
-      @required this.onDelete});
+  ShortenTile({@required this.shortenUrl});
 
   @override
   Widget build(BuildContext context) {
+    final data = Provider.of<ShortenUrlData>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
@@ -35,7 +33,10 @@ class ShortenTile extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IconButton(icon: Icon(Icons.delete), onPressed: onDelete)
+                  IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () => data.remove(shortenUrl),
+                  )
                 ],
               ),
               Divider(
@@ -48,7 +49,7 @@ class ShortenTile extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        shortenUrl.url,
+                        shortenUrl.shorten,
                         style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w700,
@@ -57,7 +58,7 @@ class ShortenTile extends StatelessWidget {
                     ),
                     CustomButton(
                       title: 'COPY',
-                      onPressed: onCopy,
+                      onPressed: () => data.copyToClipBoard(shortenUrl),
                       height: 40.0,
                       titleFontSize: 18.0,
                     )

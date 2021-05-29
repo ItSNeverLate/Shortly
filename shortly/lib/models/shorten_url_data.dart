@@ -6,8 +6,10 @@ import 'package:shortly/models/shorten_url.dart';
 
 class ShortenUrlData extends ChangeNotifier {
   List<ShortenUrl> _shortenUrlList = [
-    ShortenUrl(shorten: 'shorten', url: 'url'),
+    ShortenUrl(shorten: 'shorten0', url: 'url0'),
     ShortenUrl(shorten: 'shorten1', url: 'url1'),
+    ShortenUrl(shorten: 'shorten2', url: 'url2'),
+    ShortenUrl(shorten: 'shorten2', url: 'url2'),
     ShortenUrl(shorten: 'shorten2', url: 'url2'),
   ];
 
@@ -26,7 +28,7 @@ class ShortenUrlData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void copy(ShortenUrl shortenUrl) {
+  void copyToClipBoard(ShortenUrl shortenUrl) {
     Clipboard.setData(ClipboardData(text: shortenUrl.shorten));
     notifyListeners();
   }

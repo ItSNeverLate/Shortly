@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:shortly/components/custom_button.dart';
-import 'package:shortly/models/shorten_url.dart';
+import 'package:shortly/models/shorten_url_data.dart';
 import 'package:shortly/screens/main/empty_list.dart';
 import 'package:shortly/screens/main/shorten_list.dart';
 
@@ -14,15 +15,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   bool _isValid = true;
-  List<ShortenUrl> _list = [
-    ShortenUrl(shorten: 'shorten', url: 'url'),
-    ShortenUrl(shorten: 'shorten1', url: 'url1'),
-    ShortenUrl(shorten: 'shorten2', url: 'url2'),
-  ];
 
   @override
   Widget build(BuildContext context) {
     String _link = '';
+    final data = Provider.of<ShortenUrlData>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -31,9 +28,13 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-                child:
-                    _list.length > 0 ? ShortenList(list: _list) : EmptyList()),
+            data.count > 0
+                ? Text(
+                    'Your Link History',
+                    style: TextStyle(fontSize: 20.0),
+                  )
+                : SvgPicture.asset('images/logo.svg'),
+            Expanded(child: data.count > 0 ? ShortenList() : EmptyList()),
             Container(
               color: Theme.of(context).primaryColorDark,
               height: 200.0,

@@ -6,7 +6,6 @@ class EmptyList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset('images/logo.svg'),
         Expanded(
             child: Column(
           children: [
