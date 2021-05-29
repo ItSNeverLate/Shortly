@@ -10,7 +10,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  bool _isValid = false;
+  bool _isValid = true;
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +114,10 @@ class _MainScreenState extends State<MainScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                               borderSide: BorderSide.none,
+                              // borderSide: BorderSide(
+                              //   width: 10.0,
+                              //   color: Colors.red,
+                              // ),
                             ),
                           ),
                         ),
@@ -121,7 +125,9 @@ class _MainScreenState extends State<MainScreen> {
                         CustomButton(
                             title: 'SHORTEN IT!',
                             onPressed: () {
-                              if (_link.trim().length == 0) {}
+                              setState(() {
+                                _isValid = _link.trim().length != 0;
+                              });
                             })
                       ],
                     ),
