@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shortly/components/custom_button.dart';
-import 'package:shortly/screens/main/index.dart';
+import 'package:shortly/screens/benefits/index.dart';
 
 class StartScreen extends StatelessWidget {
   static final id = 'start_screen';
@@ -61,7 +61,7 @@ class StartScreen extends StatelessWidget {
                   CustomButton(
                     title: 'START',
                     onPressed: () =>
-                        Navigator.pushNamed(context, MainScreen.id),
+                        Navigator.pushNamed(context, BenefitsScreen.id),
                   )
                 ],
               ),

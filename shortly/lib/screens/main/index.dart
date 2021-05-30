@@ -124,7 +124,7 @@ class _MainScreenState extends State<MainScreen> {
                               getShortLink(_link.trim());
                             }
                           },
-                        )
+                        ),
                       ],
                     ),
                   ),
