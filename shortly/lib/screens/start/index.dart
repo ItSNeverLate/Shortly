@@ -13,7 +13,6 @@ class StartScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
                 child: Column(
@@ -22,7 +21,8 @@ class StartScreen extends StatelessWidget {
                   height: 30.0,
                 ),
                 SvgPicture.asset('images/logo.svg'),
-                Expanded(
+                Container(
+                  width: double.infinity,
                   child: SvgPicture.asset(
                     'images/illustration.svg',
                     alignment: Alignment.bottomRight,
@@ -39,22 +39,15 @@ class StartScreen extends StatelessWidget {
                   Text(
                     'More than just shorter links',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: _titleTextStyle,
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   Text(
-                    'Build your brand\'s recognition and get detailed insights on how your links are performing',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                      'Build your brand\'s recognition and get detailed insights on how your links are performing',
+                      textAlign: TextAlign.center,
+                      style: _descriptionTextStyle),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -72,3 +65,13 @@ class StartScreen extends StatelessWidget {
     );
   }
 }
+
+const _titleTextStyle = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.w700,
+);
+
+const _descriptionTextStyle = TextStyle(
+  fontSize: 15.0,
+  fontWeight: FontWeight.w500,
+);
