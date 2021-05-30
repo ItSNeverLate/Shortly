@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           errorColor: Colors.red[300],
           fontFamily: 'Poppins',
         ),
-        initialRoute: BenefitsScreen.id,
+        initialRoute: MainScreen.id,
         routes: {
           StartScreen.id: (context) => StartScreen(),
           BenefitsScreen.id: (context) => BenefitsScreen(),

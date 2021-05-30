@@ -4,15 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shortly/models/shorten_url.dart';
 
 class ShortenUrlData extends ChangeNotifier {
-  List<ShortenUrl> _shortenUrlList = [
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-    // ShortenUrl(shorten: 'shorten', url: 'url'),
-  ];
+  List<ShortenUrl> _shortenUrlList = [];
 
   int get count => _shortenUrlList.length;
 

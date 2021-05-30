@@ -50,19 +50,9 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            data.count > 0
-                ? Text(
-                    'Your Link History',
-                    style: TextStyle(fontSize: 20.0),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: SvgPicture.asset('images/logo.svg'),
-                  ),
             Expanded(child: data.count > 0 ? ShortenList() : EmptyList()),
             Container(
               color: Theme.of(context).primaryColorDark,
-              height: 200.0,
               child: Stack(
                 children: [
                   Container(
@@ -80,11 +70,7 @@ class _MainScreenState extends State<MainScreen> {
                           controller: _inputController,
                           cursorColor: Colors.black,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22.0,
-                            color: Colors.black,
-                          ),
+                          style: _inputTextStyle,
                           onChanged: (value) {
                             _link = value;
                           },
@@ -137,3 +123,9 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
+const _inputTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 22.0,
+  color: Colors.black,
+);

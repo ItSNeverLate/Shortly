@@ -4,15 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class EmptyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
+      padding: EdgeInsets.only(top: 32.0),
       children: [
+        SvgPicture.asset('images/logo.svg'),
         Expanded(
             child: Column(
           children: [
-            SizedBox(
-              height: 30.0,
-            ),
-            Expanded(
+            Container(
               child: SvgPicture.asset(
                 'images/illustration.svg',
               ),
@@ -20,32 +19,25 @@ class EmptyList extends StatelessWidget {
           ],
         )),
         Padding(
-          padding: const EdgeInsets.all(32.0),
+          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Let\'s get started!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.w700,
                 ),
-              ),
-              SizedBox(
-                height: 20.0,
               ),
               Text(
                 'Paste your first link into the field to shorten it',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 15.0,
                   fontWeight: FontWeight.w500,
                 ),
-              ),
-              SizedBox(
-                height: 20.0,
               ),
             ],
           ),
