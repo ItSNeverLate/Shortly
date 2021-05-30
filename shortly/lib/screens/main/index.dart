@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:shortly/components/custom_button.dart';
 import 'package:shortly/models/shorten_url.dart';
 import 'package:shortly/models/shorten_url_data.dart';
 import 'package:shortly/screens/main/empty_list.dart';
 import 'package:shortly/screens/main/shorten_list.dart';
+import 'package:shortly/service/shorten_service.dart';
 
 class MainScreen extends StatefulWidget {
   static final id = 'main_screen';
@@ -21,6 +25,23 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     String _link = '';
     final data = Provider.of<ShortenUrlData>(context);
+    final _inputController = TextEditingController();
+
+    void getShortLink(String url) async {
+      var service = ShortenService();
+
+      Response response = await service.getShortLink(url);
+
+      if (response.statusCode == 201) {
+        final result = jsonDecode(response.body);
+
+        data.add(ShortenUrl(shorten: result['result']['short_link'], url: url));
+        _inputController.text = '';
+        setState(() {
+          _link = '';
+        });
+      }
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -53,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: Column(
                       children: [
                         TextField(
-                          // controller: _text,
+                          controller: _inputController,
                           cursorColor: Colors.black,
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -97,11 +118,7 @@ class _MainScreenState extends State<MainScreen> {
                               _isValid = isValid;
                             });
                             if (isValid) {
-                              data.add(
-                                ShortenUrl(
-                                    shorten: 'http:///',
-                                    url: 'httppjhshjshsjhsjhshs'),
-                              );
+                              getShortLink(_link.trim());
                             }
                           },
                         )

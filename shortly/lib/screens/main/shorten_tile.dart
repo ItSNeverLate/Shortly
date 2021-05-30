@@ -23,13 +23,18 @@ class ShortenTile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      shortenUrl.url,
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Expanded(
+                        child: Text(
+                          shortenUrl.url,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -50,6 +55,7 @@ class ShortenTile extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         shortenUrl.shorten,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w700,

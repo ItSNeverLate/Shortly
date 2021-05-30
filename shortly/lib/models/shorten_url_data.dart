@@ -5,13 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:shortly/models/shorten_url.dart';
 
 class ShortenUrlData extends ChangeNotifier {
-  List<ShortenUrl> _shortenUrlList = [
-    ShortenUrl(shorten: 'shorten0', url: 'url0'),
-    ShortenUrl(shorten: 'shorten1', url: 'url1'),
-    ShortenUrl(shorten: 'shorten2', url: 'url2'),
-    ShortenUrl(shorten: 'shorten2', url: 'url2'),
-    ShortenUrl(shorten: 'shorten2', url: 'url2'),
-  ];
+  List<ShortenUrl> _shortenUrlList = [];
 
   int get count => _shortenUrlList.length;
 
