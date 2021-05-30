@@ -5,12 +5,14 @@ class CustomButton extends StatelessWidget {
       {@required this.title,
       @required this.onPressed,
       this.height = 55.0,
-      this.titleFontSize = 25.0});
+      this.titleFontSize = 25.0,
+      this.color});
 
   final String title;
   final Function onPressed;
   final double height;
   final double titleFontSize;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CustomButton extends StatelessWidget {
       minWidth: double.infinity,
       height: height,
       elevation: 5.0,
-      color: Theme.of(context).primaryColor,
+      color: color ?? Theme.of(context).primaryColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),

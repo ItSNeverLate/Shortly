@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shortly/components/custom_button.dart';
 import 'package:shortly/models/shorten_url.dart';
 import 'package:shortly/models/shorten_url_data.dart';
 
-class ShortenTile extends StatelessWidget {
+class ShortenTile extends StatefulWidget {
   final ShortenUrl shortenUrl;
 
   ShortenTile({@required this.shortenUrl});
+
+  @override
+  _ShortenTileState createState() => _ShortenTileState();
+}
+
+class _ShortenTileState extends State<ShortenTile> {
+  bool _isCopied = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,7 @@ class ShortenTile extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Expanded(
                         child: Text(
-                          shortenUrl.url,
+                          widget.shortenUrl.url,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 16.0,
@@ -40,7 +48,7 @@ class ShortenTile extends StatelessWidget {
                   ),
                   IconButton(
                     icon: Icon(Icons.delete),
-                    onPressed: () => data.remove(shortenUrl),
+                    onPressed: () => data.remove(widget.shortenUrl),
                   )
                 ],
               ),
@@ -54,7 +62,7 @@ class ShortenTile extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        shortenUrl.shorten,
+                        widget.shortenUrl.shorten,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontSize: 16.0,
@@ -63,10 +71,18 @@ class ShortenTile extends StatelessWidget {
                       ),
                     ),
                     CustomButton(
-                      title: 'COPY',
-                      onPressed: () => data.copyToClipBoard(shortenUrl),
+                      title: _isCopied ? 'COPIED!' : 'COPY',
+                      onPressed: () async {
+                        await Clipboard.setData(
+                            ClipboardData(text: widget.shortenUrl.shorten));
+                        setState(() {
+                          _isCopied = true;
+                        });
+                      },
                       height: 40.0,
                       titleFontSize: 18.0,
+                      color:
+                          _isCopied ? Theme.of(context).primaryColorDark : null,
                     )
                   ],
                 ),

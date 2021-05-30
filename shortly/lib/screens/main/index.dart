@@ -55,7 +55,10 @@ class _MainScreenState extends State<MainScreen> {
                     'Your Link History',
                     style: TextStyle(fontSize: 20.0),
                   )
-                : SvgPicture.asset('images/logo.svg'),
+                : Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SvgPicture.asset('images/logo.svg'),
+                  ),
             Expanded(child: data.count > 0 ? ShortenList() : EmptyList()),
             Container(
               color: Theme.of(context).primaryColorDark,
