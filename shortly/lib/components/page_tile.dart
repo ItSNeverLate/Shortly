@@ -23,12 +23,12 @@ class PageTile extends StatelessWidget {
             alignment: Alignment.topCenter,
             children: [
               Container(
-                margin: EdgeInsets.only(top: _radius),
+                margin: EdgeInsets.only(top: _radius, right: 10.0, left: 10.0),
                 child: Material(
                   borderRadius: BorderRadius.all(Radius.circular(_radius / 2)),
                   color: Colors.white,
                   child: Container(
-                    height: 300.0,
+                    height: 280.0,
                     padding: EdgeInsets.all(16.0),
                     width: double.infinity,
                     child: Column(

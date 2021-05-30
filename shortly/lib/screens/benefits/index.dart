@@ -16,51 +16,35 @@ class BenefitsScreen extends StatelessWidget {
           padding: EdgeInsets.all(30.0),
           width: double.infinity,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SvgPicture.asset('images/logo.svg'),
-              Expanded(
-                child: PageView(
-                  onPageChanged: (pageNumber) =>
-                      _currentPageNotifier.value = pageNumber,
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    PageTile(
-                        title: 'Brand Recognitions',
-                        description:
-                            'Boost your brand recognition with each click. Generic links don\'t mean a thing. Branded links help instil confidence in your contetnt',
-                        iconPath: 'images/diagram.svg'),
-                    PageTile(
-                        title: 'Detailed Records',
-                        description:
-                            'Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions',
-                        iconPath: 'images/gauge.svg'),
-                    PageTile(
-                        title: 'Fully Customizable',
-                        description:
-                            'Improve brand awareness and content discoverability through customizable links, supercharging audience engagement',
-                        iconPath: 'images/tools.svg'),
-                  ],
-                ),
-              ),
-              CirclePageIndicator(
-                size: 12.0,
-                selectedSize: 12.0,
-                itemCount: 3,
-                dotColor: Theme.of(context).scaffoldBackgroundColor,
-                borderWidth: 4,
-                borderColor: Colors.grey,
-                currentPageNotifier: _currentPageNotifier,
+              Column(
+                children: [
+                  Container(
+                    height: 370.0,
+                    child: PageView(
+                      onPageChanged: (pageNumber) =>
+                          _currentPageNotifier.value = pageNumber,
+                      scrollDirection: Axis.horizontal,
+                      children: _pages,
+                    ),
+                  ),
+                  CirclePageIndicator(
+                    size: 12.0,
+                    selectedSize: 12.0,
+                    itemCount: _pages.length,
+                    dotColor: Theme.of(context).scaffoldBackgroundColor,
+                    borderWidth: 4,
+                    borderColor: Colors.grey,
+                    currentPageNotifier: _currentPageNotifier,
+                  ),
+                ],
               ),
               TextButton(
-                  onPressed: () => Navigator.pushNamed(context, MainScreen.id),
-                  child: Text(
-                    'Skip',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black),
-                  ))
+                onPressed: () => Navigator.pushNamed(context, MainScreen.id),
+                child: Text('Skip', style: _skipTextStyle),
+              )
             ],
           ),
         ),
@@ -68,3 +52,27 @@ class BenefitsScreen extends StatelessWidget {
     );
   }
 }
+
+const _skipTextStyle = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w500,
+  color: Colors.black,
+);
+
+final _pages = [
+  PageTile(
+      title: 'Brand Recognitions',
+      description:
+          'Boost your brand recognition with each click. Generic links don\'t mean a thing. Branded links help instil confidence in your contetnt',
+      iconPath: 'images/diagram.svg'),
+  PageTile(
+      title: 'Detailed Records',
+      description:
+          'Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions',
+      iconPath: 'images/gauge.svg'),
+  PageTile(
+      title: 'Fully Customizable',
+      description:
+          'Improve brand awareness and content discoverability through customizable links, supercharging audience engagement',
+      iconPath: 'images/tools.svg'),
+];
